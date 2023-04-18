@@ -5,8 +5,9 @@ const con = require('./src/db.js');
 const PORT = process.env.port || 4000;
 const Products = require('./models/products.js');
 const Category = require('./models/category.js');
+const cors = require('cors')
 app.use(express.json());
-
+app.use(cors())
 app.get('/', (req, res) => {
     res.send('<div style="height:100%;display:flex;justify-content:center;align-items: center;"><h1>hello i m live !!!</h1></div>')
 })
