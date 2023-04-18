@@ -28,7 +28,7 @@ app.get('/products', async (req, res) => {
     }
     else if (req.query.cat) {
         try {
-            const tmp = await Products.find({ category: req.query.tag }).select({
+            const tmp = await Products.find({ category: req.query.cat }).select({
                 description: 0,
                 category: 0,
                 images: 0,
