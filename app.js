@@ -9,7 +9,7 @@ const cors = require('cors')
 app.use(express.json());
 app.use(cors())
 app.get('/', (req, res) => {
-    res.send('<div style="height:100%;display:flex;justify-content:center;align-items: center;"><h1>hello i m live !!!</h1></div>')
+    res.sendFile(__dirname + '/src/index.html');
 })
 
 app.get('/products', async (req, res) => {
