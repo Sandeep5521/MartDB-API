@@ -1,4 +1,4 @@
-# Mart-API
+# MartDB-API
 
 Welcome to the MartDB eCommerce Shopping Products API! Our API provides free access to a wide range of products from various categories, allowing you to retrieve detailed information about each product, including its name, description, price, images, reviews, and more.
 
@@ -85,3 +85,7 @@ To use our API, simply make HTTP requests to our endpoints, passing the necessar
   ]
 }
 ```
+
+To access our API, you don't need to sign up for an API key. Our API documentation provides detailed instructions on how to make requests, as well as examples of the JSON responses you can expect to receive.
+
+We hope you find our MartDB eCommerce Shopping Products API useful! If you have any questions or encounter any issues, please don't hesitate to contact us through our website or email.
