@@ -11,7 +11,7 @@ To use our API, simply make HTTP requests to our endpoints, passing the necessar
 
 #### Get all products
 
-```http
+```
   GET /products
 ```
 
@@ -22,7 +22,7 @@ To use our API, simply make HTTP requests to our endpoints, passing the necessar
 
 #### Get product by id
 
-```http
+```
   GET /products?id={id}
 ```
 
@@ -32,7 +32,7 @@ To use our API, simply make HTTP requests to our endpoints, passing the necessar
 
 #### Get products by Category
 
-```http
+```
   GET /products?cat=mobiles
 ```
 
@@ -42,7 +42,7 @@ To use our API, simply make HTTP requests to our endpoints, passing the necessar
 
 #### Get product by Name
 
-```http
+```
   GET /products?name={name}
 ```
 
@@ -52,18 +52,18 @@ To use our API, simply make HTTP requests to our endpoints, passing the necessar
 
 #### Get All Categories
 
-```http
+```
   GET /category
 ```
 
 #### Get Single Random Product
 
-```http
+```
   GET /random
 ```
 #### Post Single Product
 
-```http
+```
   POST /products
 ```
 
