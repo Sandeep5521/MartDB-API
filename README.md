@@ -39,6 +39,8 @@ To use our API, simply make HTTP requests to our endpoints, passing the necessar
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `cat`      | `string` | **Required**. category of product to fetch |
+| `page`      | `string` | **Optional**. Page number of products to fetch                     
+| `limit`      | `string` | **Optional**. Page limit of products to fetch |
 
 #### Get product by Name
 
