@@ -145,6 +145,27 @@ app.post('/Products', async (req, res) => {
     }
 })
 
+app.delete('/Products', async (req, res) => {
+    if (req.query.id) {
+        try {
+            let tmp = await Products.findOne({ _id: req.query.id })
+            console.log(tmp);
+            tmp = await Category.updateOne({ title: tmp.category }, {
+                $inc: {
+                    products: -1
+                }
+            })
+            console.log(tmp);
+            tmp = await Products.deleteOne({ _id: req.query.id })
+            console.log(tmp);
+            res.sendStatus(200)
+        } catch (error) {
+            res.sendStatus(502)
+        }
+    }
+    else res.sendStatus(401);
+})
+
 app.get('/Category', async (req, res) => {
     try {
         const tmp = await Category.find().select({
