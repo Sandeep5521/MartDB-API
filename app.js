@@ -27,19 +27,45 @@ app.get('/products', async (req, res) => {
 
     }
     else if (req.query.cat) {
-        try {
-            const tmp = await Products.find({ category: req.query.cat }).select({
-                description: 0,
-                category: 0,
-                images: 0,
-                date: 0,
-                brand: 0,
-                reviews: 0,
-                __v: 0
-            });
-            res.send(tmp);
-        } catch (error) {
-            res.sendStatus(502)
+        if (req.query.page && req.query.limit) {
+            const Count = await Products.find().count();
+            const page = Number(req.query.page);
+            const Limit = Number(req.query.limit);
+            const Skip = (page - 1) * Limit;
+
+            if (Skip < Count) {
+                try {
+                    const tmp = await Products.find({ category: req.query.cat }).select({
+                        description: 0,
+                        category: 0,
+                        images: 0,
+                        date: 0,
+                        brand: 0,
+                        reviews: 0,
+                        __v: 0
+                    }).skip(Skip).limit(Limit).sort({ date: -1 });
+                    res.send(tmp);
+                } catch (error) {
+                    res.sendStatus(502);
+                }
+            }
+            else res.sendStatus(404);
+        }
+        else {
+            try {
+                const tmp = await Products.find({ category: req.query.cat }).select({
+                    description: 0,
+                    category: 0,
+                    images: 0,
+                    date: 0,
+                    brand: 0,
+                    reviews: 0,
+                    __v: 0
+                });
+                res.send(tmp);
+            } catch (error) {
+                res.sendStatus(502)
+            }
         }
     }
     else if (req.query.id) {
