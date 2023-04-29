@@ -167,14 +167,27 @@ app.delete('/Products', async (req, res) => {
 })
 
 app.get('/Category', async (req, res) => {
-    try {
-        const tmp = await Category.find().select({
-            _id: 0,
-            __v: 0
-        }).sort({ date: -1 });
-        res.send(tmp);
-    } catch (error) {
-        res.sendStatus(502)
+    if (req.query.name) {
+        try {
+            const tmp = await Category.findOne({ title: req.query.name }).select({
+                _id: 0,
+                __v: 0
+            });
+            res.send(tmp);
+        } catch (error) {
+            res.sendStatus(502)
+        }
+    }
+    else {
+        try {
+            const tmp = await Category.find().select({
+                _id: 0,
+                __v: 0
+            }).sort({ date: -1 });
+            res.send(tmp);
+        } catch (error) {
+            res.sendStatus(502)
+        }
     }
 })
 
