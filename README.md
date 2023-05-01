@@ -17,8 +17,8 @@ To use our API, simply make HTTP requests to our endpoints, passing the necessar
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `page`      | `string` | **Optional**. Page number of products to fetch                     
-| `limit`      | `string` | **Optional**. Page limit of products to fetch |
+| `page`      | `number` | **Optional**. Page number of products to fetch                     
+| `limit`      | `number` | **Optional**. Page limit of products to fetch |
 
 #### Get product by id
 
@@ -39,8 +39,8 @@ To use our API, simply make HTTP requests to our endpoints, passing the necessar
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `cat`      | `string` | **Required**. category of product to fetch |
-| `page`      | `string` | **Optional**. Page number of products to fetch                     
-| `limit`      | `string` | **Optional**. Page limit of products to fetch |
+| `page`      | `number` | **Optional**. Page number of products to fetch                     
+| `limit`      | `number` | **Optional**. Page limit of products to fetch |
 
 #### Get product by Name
 
@@ -63,6 +63,11 @@ To use our API, simply make HTTP requests to our endpoints, passing the necessar
 ```
   GET /random
 ```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `limit`      | `number` | **Optional**. limit of random products to fetch |
+
 #### Post Single Product
 
 ```
