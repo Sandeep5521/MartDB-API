@@ -193,8 +193,9 @@ app.get('/Category', async (req, res) => {
 
 app.get('/random', async (req, res) => {
     try {
+        const len = (req.query.limit) ? Number(req.query.limit) : 1;
         const tmp = await Products.aggregate([
-            { $sample: { size: 1 } },
+            { $sample: { size: len } },
             {
                 $project: {
                     date: 0,
