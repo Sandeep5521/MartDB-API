@@ -68,6 +68,17 @@ To use our API, simply make HTTP requests to our endpoints, passing the necessar
 | :-------- | :------- | :-------------------------------- |
 | `q`      | `string` | **Required**. Search query for fetching the products |
 
+
+#### Get Autocomplete text by Search
+
+```
+  GET /search?a={text}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `a`      | `string` | **Required**. text for fetching the autocomplete text |
+
 #### Get Single Random Product
 
 ```
