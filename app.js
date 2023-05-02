@@ -191,6 +191,41 @@ app.get('/Category', async (req, res) => {
     }
 })
 
+app.get('/search', async (req, res) => {
+    if (req.query.q) {
+        try {
+            const tmp = await Products.aggregate([
+                {
+                    $search: {
+                        index: "default",
+                        text: {
+                            query: req.query.q,
+                            path: {
+                                wildcard: "*"
+                            }
+                        }
+                    }
+                },
+                {
+                    $project: {
+                        description: 0,
+                        category: 0,
+                        images: 0,
+                        date: 0,
+                        brand: 0,
+                        reviews: 0,
+                        __v: 0
+                    }
+                }
+            ]);
+            res.send(tmp);
+        } catch (error) {
+            res.sendStatus(502)
+        }
+    }
+    else res.sendStatus(400);
+})
+
 app.get('/random', async (req, res) => {
     try {
         const len = (req.query.limit) ? Number(req.query.limit) : 1;
@@ -198,7 +233,12 @@ app.get('/random', async (req, res) => {
             { $sample: { size: len } },
             {
                 $project: {
+                    description: 0,
+                    category: 0,
+                    images: 0,
                     date: 0,
+                    brand: 0,
+                    reviews: 0,
                     __v: 0
                 }
             }
