@@ -222,6 +222,30 @@ app.get('/search', async (req, res) => {
             res.sendStatus(502)
         }
     }
+    else if (req.query.a) {
+        try {
+            const tmp = await Products.aggregate([
+                {
+                    $search: {
+                        index: "auto",
+                        autocomplete: {
+                            query: req.query.a,
+                            path: "title"
+                        }
+                    }
+                },
+                {
+                    $project: {
+                        _id: 0,
+                        title: 1
+                    }
+                }
+            ]);
+            res.send(tmp);
+        } catch (error) {
+            res.sendStatus(502)
+        }
+    }
     else res.sendStatus(400);
 })
 
