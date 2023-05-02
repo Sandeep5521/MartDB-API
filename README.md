@@ -45,7 +45,7 @@ To use our API, simply make HTTP requests to our endpoints, passing the necessar
 #### Get product by Name
 
 ```
-  GET /products?name={name}
+  GET /products?name={title}
 ```
 
 | Parameter | Type     | Description                       |
@@ -57,6 +57,16 @@ To use our API, simply make HTTP requests to our endpoints, passing the necessar
 ```
   GET /category
 ```
+
+#### Get Products by Search
+
+```
+  GET /search?q={query}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `q`      | `string` | **Required**. Search query for fetching the products |
 
 #### Get Single Random Product
 
