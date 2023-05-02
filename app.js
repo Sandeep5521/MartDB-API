@@ -233,7 +233,6 @@ app.get('/random', async (req, res) => {
             {
                 $project: {
                     description: 0,
-                    category: 0,
                     images: 0,
                     date: 0,
                     brand: 0,
