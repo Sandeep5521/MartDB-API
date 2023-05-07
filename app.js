@@ -6,6 +6,7 @@ const PORT = process.env.port || 4000;
 const Products = require('./models/products.js');
 const Category = require('./models/category.js');
 const cors = require('cors')
+const safe = require('./middleware/safe.js')
 app.use(express.json());
 app.use(cors())
 app.get('/', (req, res) => {
@@ -121,7 +122,7 @@ app.get('/products', async (req, res) => {
     }
 })
 
-app.post('/Products', async (req, res) => {
+app.post('/Products', safe, async (req, res) => {
     try {
         const tmp = await Products.insertMany([req.body]);
         const li = req.body.category;
