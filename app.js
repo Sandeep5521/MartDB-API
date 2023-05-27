@@ -272,6 +272,23 @@ app.get('/random', async (req, res) => {
     }
 })
 
+app.post('/review', async (req, res) => {
+    try {
+        await Products.updateOne({ _id: req.body.pid }, {
+            $push: {
+                reviews: {
+                    id: req.body.id,
+                    stars: req.body.stars,
+                    review: req.body.review
+                }
+            }
+        })
+        res.send(true);
+    } catch (error) {
+        res.send(false);
+    }
+})
+
 app.get('*', (req, res) => {
     res.sendStatus(404);
 })

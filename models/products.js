@@ -38,8 +38,13 @@ const productSchema = mongoose.Schema({
     reviews: [
         {
             _id: false,
-            name: String,
-            review: String
+            id: String,
+            stars: Number,
+            review: String,
+            date: {
+                type: Date,
+                default: Date.now
+            }
         }
     ],
     date: {
